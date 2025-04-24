@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>elasticsearch-score-normalizer-rescorer</name>
+    <description>Plugin to normalize score using Min Max or Z Score normalizer</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
