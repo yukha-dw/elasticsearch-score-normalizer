@@ -1,5 +1,5 @@
 # Elasticsearch Score Normalizer
-Plugin to normalize score using Min Max or Z Score normalizer and updates normalized score by a 
+Plugin to normalize score using Min Max or Z Score normalizer and updates normalized score by a
 given `factor` and `factor_mode`.
 This plugin is built on top of elasticsearch's rescorer feature and normalizes the top docs.
 
@@ -13,8 +13,8 @@ Type of the normalizer. Accepts `z_score` or `min_max`, if nothing passed defaul
 A float value. If passed updates the normalized score using this factor and given operation
 (`factor_mode`)
 #### factor_mode (Optional)
-Tells how to combine normalized score and the `factor`. Accepted values are `sum`, `multiply` 
-and `increase_by_percent`. `increase_by_percent` increases the score by given factor(values 
+Tells how to combine normalized score and the `factor`. Accepted values are `sum`, `multiply`
+and `increase_by_percent`. `increase_by_percent` increases the score by given factor(values
 from 0 to 1)
 
 
@@ -28,12 +28,12 @@ from 0 to 1)
 `on_score_same` - Normalize strategy when all docs score are same. Accepted values are `avg`
 (average of max and min), `max`(maximum value), `min`(minimum value)
 
-Normalize scores between given `max_score` and `min_score`. If no `min_score` and `max_score` is 
+Normalize scores between given `max_score` and `min_score`. If no `min_score` and `max_score` is
 passed, defaults to 1 and 5 respectively.
 
 Example:
 ```json
-       
+
 {
   "query": {
     ... some query
@@ -51,7 +51,7 @@ Example:
 ```
 
 ### Z Score Normalizer
-Normalize scores using Z Score. 
+Normalize scores using Z Score.
 
 Below example first normalizes the scores using z-score and then increase the score by 60 percent.
 Example:
@@ -73,12 +73,11 @@ Example:
 }
 ```
 ### Installation
-0. Change the elasticsearch version in pom.xml with your Elasticsearch server version. You can  safely change the version between 7.0 to 7.12 without any code changes.
 1. Build using: `mvn clean install`
-2. Install the zip file generated in folder: 
+2. Install the zip file generated in folder:
 `<path to project>/project/target/releases/elasticsearch-score-normalizer-rescorer-1.0-SNAPSHOT.zip`
-   
-To install, go to ES bin folder and type command: 
+
+To install, go to ES bin folder and type command:
 ```shell
 ./elasticsearch-plugin install file:<path to zip plugin>
 ```
@@ -105,5 +104,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-

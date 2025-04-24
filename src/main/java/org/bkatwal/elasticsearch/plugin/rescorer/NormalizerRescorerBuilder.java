@@ -23,16 +23,17 @@ SOFTWARE.
  */
 package org.bkatwal.elasticsearch.plugin.rescorer;
 
-import org.elasticsearch.common.ParseField;
+import org.elasticsearch.xcontent.ParseField;
 import org.elasticsearch.common.io.stream.StreamInput;
 import org.elasticsearch.common.io.stream.StreamOutput;
-import org.elasticsearch.common.xcontent.ObjectParser;
-import org.elasticsearch.common.xcontent.XContentBuilder;
-import org.elasticsearch.common.xcontent.XContentParser;
+import org.elasticsearch.xcontent.ObjectParser;
+import org.elasticsearch.xcontent.XContentBuilder;
+import org.elasticsearch.xcontent.XContentParser;
 import org.elasticsearch.index.query.QueryRewriteContext;
-import org.elasticsearch.index.query.QueryShardContext;
+import org.elasticsearch.index.query.SearchExecutionContext;
 import org.elasticsearch.search.rescore.RescoreContext;
 import org.elasticsearch.search.rescore.RescorerBuilder;
+import org.elasticsearch.Version;
 
 import java.io.IOException;
 
@@ -116,7 +117,7 @@ public class NormalizerRescorerBuilder extends RescorerBuilder<NormalizerRescore
   }
 
   @Override
-  protected RescoreContext innerBuildContext(int windowSize, QueryShardContext context)
+  protected RescoreContext innerBuildContext(int windowSize, SearchExecutionContext context)
       throws IOException {
     ScoreNormalizerRescorer.ScoreNormalizerRescorerContext scoreNormalizerRescorerContext =
         new ScoreNormalizerRescorer.ScoreNormalizerRescorerContext(
@@ -227,5 +228,10 @@ public class NormalizerRescorerBuilder extends RescorerBuilder<NormalizerRescore
         this.normalizerType = normalizerType;
       }
     }
+  }
+
+  @Override
+  public Version getMinimalSupportedVersion() {
+      return Version.V_EMPTY;
   }
 }
